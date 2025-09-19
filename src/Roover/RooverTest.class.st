@@ -84,12 +84,12 @@ self assert: r x equals: 0
 
 { #category : 'tests' }
 RooverTest >> testRotateLeft [
-|r|
- r := Roover new.
-r turnLeft.
 
-self assert: r direction equals: West new.
+	| r |
+	r := Roover new.
+	r turnLeft.
 
+	self assert: r direction equals: West new
 ]
 
 { #category : 'tests' }
