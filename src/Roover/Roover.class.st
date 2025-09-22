@@ -104,6 +104,17 @@ Roover >> move [
 ]
 
 { #category : 'as yet unclassified' }
+Roover >> move2 [
+
+	| p |
+	p := self direction move: x @ y.
+	(( p x > gridSize x ) or: [ p y > gridSize y ]) ifTrue: [ ^ self ].
+	"or: [ [ p x < 1 ] or: [ p y < 1 ] ] ]"
+	x := p x.
+	y := p y
+]
+
+{ #category : 'as yet unclassified' }
 Roover >> turnLeft [
 	self direction: self direction rotateLeft
 ]

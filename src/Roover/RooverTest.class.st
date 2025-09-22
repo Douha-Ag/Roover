@@ -94,6 +94,23 @@ self assert: r x equals: 0
 ]
 
 { #category : 'tests' }
+RooverTest >> testMove2 [
+
+	| r |
+	r := Roover new.
+	r gridSize: 2@2.
+	r intialize2.
+	r move2.
+	self assert: r x equals:1.
+	self assert: r y equals: 2.
+	r move2. " test de depasser"
+	self assert: r x equals:1.
+	self assert: r y equals: 2.
+	
+	
+]
+
+{ #category : 'tests' }
 RooverTest >> testRotateLeft [
 
 	| r |
