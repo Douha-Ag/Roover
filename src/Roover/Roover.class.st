@@ -86,6 +86,14 @@ Roover >> interpretInit: aString [
 	direction:= Direction fromChar: cmd third 
 ]
 
+{ #category : 'as yet unclassified' }
+Roover >> intialize2 [
+	super initialize.
+	direction := North new.
+	x := 1.
+	y := 1.
+]
+
 { #category : 'accessing' }
 Roover >> move [
 	| p |

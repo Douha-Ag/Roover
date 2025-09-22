@@ -61,6 +61,17 @@ RooverTest >> testInitialize [
 ]
 
 { #category : 'tests' }
+RooverTest >> testInitialize2 [
+
+	| r |
+	r := Roover new.
+	r intialize2.
+	self assert: r x equals: 1.
+	self assert: r x equals: 1.
+	self assert: r direction equals: North new
+]
+
+{ #category : 'tests' }
 RooverTest >> testInterpretDirection [
 
 	| r |
