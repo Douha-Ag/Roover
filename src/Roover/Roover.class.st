@@ -12,6 +12,16 @@ Class {
 }
 
 { #category : 'accessing' }
+Roover >> back [
+
+	| p |
+	p := self direction back: x @ y.
+	(p x < 1 or: [ p y < 1 ]) ifTrue: [ ^ self ].
+	x := p x.
+	y := p y
+]
+
+{ #category : 'accessing' }
 Roover >> direction [
 	^ direction
 ]

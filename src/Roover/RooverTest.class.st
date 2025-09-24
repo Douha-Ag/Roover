@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'tests' }
+RooverTest >> testBack [
+
+	| r |
+	r := Roover new.
+	r intialize2.
+	r move.
+	r back.
+	self assert: r y equals: 1 "(x;y-1)"
+]
+
+{ #category : 'tests' }
 RooverTest >> testDefaultRooverDirectionIsNorth [
 
 	| r |
