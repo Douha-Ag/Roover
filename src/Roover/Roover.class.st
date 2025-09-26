@@ -63,6 +63,21 @@ Roover >> interpretCommand: aString [
 ]
 
 { #category : 'accessing' }
+Roover >> interpretDirection2: aString [
+
+	aString do: [ :c |
+			c = $R
+				ifTrue: [ self turnRight ]
+				ifFalse: [
+						c = $L
+							ifTrue: [ self turnLeft ]
+							ifFalse: [
+									c = $B
+										ifTrue: [ self back ]
+										ifFalse: [ self move2 ] ] ] ]
+]
+
+{ #category : 'accessing' }
 Roover >> interpretDirection: aString [
 
 	
@@ -80,11 +95,11 @@ Roover >> interpretFullCommand: aString [
 
 	| temp |
 	temp := aString splitOn: Character cr.
-
 	self interpretCommand: temp first.
-
 	self interpretInit: temp second.
-	self interpretDirection: temp third
+	self interpretDirection2: temp third  " pour le back"
+	"self interpretDirection: temp third"
+	
 ]
 
 { #category : 'accessing' }
@@ -118,8 +133,8 @@ Roover >> move2 [
 
 	| p |
 	p := self direction move: x @ y.
-	(( p x > gridSize x ) or: [ p y > gridSize y ]) ifTrue: [ ^ self ].
-	"or: [ [ p x < 1 ] or: [ p y < 1 ] ] ]"
+	((p x > gridSize x or: [ p y > gridSize y ]) or: [(p x < 0 or: [ p y < 0 ])]) ifTrue: [ ^ self ].
+	"(p x < 0 or: [ p y < 0 ]) ifTrue: [ ^ self ]."
 	x := p x.
 	y := p y
 ]
