@@ -97,9 +97,8 @@ Roover >> interpretFullCommand: aString [
 	temp := aString splitOn: Character cr.
 	self interpretCommand: temp first.
 	self interpretInit: temp second.
-	self interpretDirection2: temp third  " pour le back"
+	self interpretDirection2: temp third. "pour le back"
 	"self interpretDirection: temp third"
-	
 ]
 
 { #category : 'accessing' }
@@ -137,6 +136,26 @@ Roover >> move2 [
 	"(p x < 0 or: [ p y < 0 ]) ifTrue: [ ^ self ]."
 	x := p x.
 	y := p y
+]
+
+{ #category : 'accessing' }
+Roover >> reCording: aString [
+
+	| liste |
+	liste := OrderedCollection new.
+	aString do: [ :c |
+			c = $R
+				ifTrue: [ self turnRight ]
+				ifFalse: [
+						c = $L
+							ifTrue: [ self turnLeft ]
+							ifFalse: [
+									c = $B
+										ifTrue: [ self back ]
+										ifFalse: [ self move2 ] ] ].
+			liste add:  (self x @ self y)  ].
+
+	^ liste
 ]
 
 { #category : 'as yet unclassified' }

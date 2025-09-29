@@ -122,6 +122,23 @@ RooverTest >> testMove2 [
 ]
 
 { #category : 'tests' }
+RooverTest >> testReCording [
+
+	| r resultat c |
+	resultat := OrderedCollection new.
+	c := OrderedCollection new.
+	r := Roover new.
+	r interpretCommand: '5 5'.
+	r interpretInit: '1 2 N'.
+	resultat addAll: {
+			(1 @ 2).
+			(2 @ 2).
+			(3 @ 2) }.
+	c := r reCording: 'RMM'.
+	self assert: resultat = c
+]
+
+{ #category : 'tests' }
 RooverTest >> testRotateLeft [
 
 	| r |
