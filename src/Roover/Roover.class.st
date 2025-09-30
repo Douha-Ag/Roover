@@ -168,6 +168,26 @@ Roover >> turnRight [
 	self direction: self direction rotateRight .
 ]
 
+{ #category : 'accessing' }
+Roover >> validInput: aString [
+
+	| temp p1 p2 p3 pos validDirections validCommands |
+	validDirections := #( 'N' 'S' 'E' 'W' ).
+	validCommands := #( 'M' 'B' 'L' 'R' ).
+
+	temp := aString splitOn: Character cr.
+	p1 := temp first.
+	p2 := temp second.
+	p3 := temp third.
+	pos := p2 splitOn: Character space.
+
+	^ (p1 allSatisfy: [ :c | c isDigit ]) and: [
+			  (pos first allSatisfy: [ :c | c isDigit ]) and: [
+					  (pos second allSatisfy: [ :c | c isDigit ]) and: [
+							  (validDirections includes: pos third) and: [
+								  p3 allSatisfy: [ :c | validCommands includes: c ] ] ] ] ]
+]
+
 { #category : 'accessing - structure variables' }
 Roover >> x [
 	^ x

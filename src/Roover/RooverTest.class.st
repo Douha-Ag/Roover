@@ -169,3 +169,18 @@ LMLM' splitOn: Character cr).
 	self assert: splits size equals: 3.
 	self assert: splits first equals: '5 5'
 ]
+
+{ #category : 'tests' }
+RooverTest >> testValidInput [
+
+	| r invalidInput validInput |
+	r := Roover new.
+	validInput := '5 5
+1 2 N
+RMM'.
+	invalidInput := '5 S
+1 2 N
+LNLMLMLMM'.
+	self assert: (r validInput: invalidInput) not.
+	self assert: (r validInput: validInput).
+]
